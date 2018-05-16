@@ -21,9 +21,9 @@
             android:label="@string/title_activity_mountain_details"
             android:theme="@style/AppTheme.NoActionBar"
             android:parentActivityName="com.example.brom.activitiesapp.MainActivity">
-        <meta-data
-            android:name="android.support.PARENT_ACTIVITY"
-            android:value="com.example.brom.activitiesapp.MainActivity" />
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.brom.activitiesapp.MainActivity" />
         </activity>
     </application>
 

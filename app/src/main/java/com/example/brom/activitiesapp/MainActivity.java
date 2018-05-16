@@ -1,10 +1,12 @@
 package com.example.brom.activitiesapp;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -17,6 +19,8 @@ public class MainActivity extends AppCompatActivity {
     private String[] mountainLocations = {"Alps","Alps","Alaska"};
     private int[] mountainHeights ={4478,4808,6190};
     // Create ArrayLists from the raw data above and use these lists when populating your ListView.
+
+    public static final String EXTRA_MESSAGE = "com.example.myfirstapp.MESSAGE";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,30 +37,16 @@ public class MainActivity extends AppCompatActivity {
 
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                String temp = "Location: " + mountainLocations[position] + ", Height: " + String.valueOf(mountainHeights[position]);
+                Intent intent = new Intent(MainActivity.this, MountainDetailsActivity.class);
+                startActivity(intent);
 
-                Toast.makeText(getApplicationContext(), temp, Toast.LENGTH_SHORT).show();
+                String name = mountainNames[position];
+                int height = mountainHeights[position];
+                String location = mountainLocations[position];
+
+                intent.putExtra("string_key", name);
 
             }
         });
-        // 1. Create a ListView as in previous assignment
-        // 2. Create a new activity named "MountainDetailsActivity
-        // 3. Create a new Layout file for the MountainDetailsActivity called
-        //    "activity_mountaindetails". MountainDetailsActivity must have MainActivity as its
-        //    ´parent activity.
-        // 4. The layout file created in step 3 must have a LinearLayout
-        // 5. The layout file created in step 3 must be able to display
-        //    * Mountain Name
-        //    * Mountain Location
-        //    * Mountain Height
-        // 6. When tapping on a list item: create an Intent that includes
-        //    * Mountain Name
-        //    * Mountain Location
-        //    * Mountain Height
-        // 7. Display the MountainDetailsActivity with the data from the Intent created in step
-        //    6
-        // 8. From the MountainDetailsActivity you should have an option to "go back" using an
-        //    left arro button. This is done by letting the MainActivity be the parent activity to
-        //    MountainDetailsActivity.
     }
 }
