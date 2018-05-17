@@ -7,14 +7,8 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 public class MountainDetailsActivity extends AppCompatActivity {
 
@@ -26,23 +20,21 @@ public class MountainDetailsActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
 
-        int getInt;
-        String name;
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        Bundle extras = getIntent().getExtras();
+        String name = getIntent().getStringExtra("mountain_name");
+        String location = getIntent().getStringExtra("mountain_location");
+        String height = getIntent().getStringExtra("mountain_height");
 
-        // Read the extras data if it's available.
-        if (extras != null)
-        {
-            getInt = extras.getInt("int_key");
-            name = extras.getString("string_key");
+        //Toast.makeText(getApplicationContext(), "data = " + data, Toast.LENGTH_SHORT).show();
 
-        }else {
+        TextView mtName = (TextView) findViewById(R.id.mountainNameText);
+        TextView mtLocation = (TextView) findViewById(R.id.mountainLocationText);
+        TextView mtHeight = (TextView) findViewById(R.id.mountainHeightText);
 
-            Toast.makeText(getApplicationContext(), "No Data", Toast.LENGTH_SHORT).show();
-
-        }
-
+        mtName.setText(name);
+        mtLocation.setText(location);
+        mtHeight.setText(height + "m");
     }
 
 }
