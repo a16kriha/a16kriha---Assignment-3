@@ -12,7 +12,7 @@
     <ImageView
         android:id="@+id/mountainPicture"
         android:layout_width="match_parent"
-        android:layout_height="256dp"
+        android:layout_height="300dp"
         app:srcCompat="@android:drawable/arrow_up_float" />
 
     <TextView
